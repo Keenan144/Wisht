@@ -7,7 +7,9 @@ class ListsController < ApplicationController
   def show
     @user = User.find_by(id: current_user.id)
     @list = List.find_by(id: params[:format])
-
+    if @list == nil 
+      @list = List.find(params[:id])
+    end
   end
 
   def new

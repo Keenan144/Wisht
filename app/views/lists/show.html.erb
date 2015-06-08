@@ -4,8 +4,15 @@
     <section class="user_info">
       <h1>
         <%= @list.title %><br>
-
       </h1>
     </section>
   </aside>
 </div>
+<%= link_to "add wish", new_wish_path(@list), class: "btn btn-danger delete"%>
+<% if @list.wishes %>
+  <% Wish.where(list_id: @list.id).each do |wish| %>
+  <%= wish.name %>
+  test
+  <% end %>
+
+<% end %>
