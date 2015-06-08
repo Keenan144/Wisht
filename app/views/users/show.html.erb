@@ -12,22 +12,22 @@
 
 <div class="container lists-container">
   <div class="header">
-    <h2>Your Lists
+    <h2>Wish Lists
     <small><%= link_to "add list", new_list_path %></small></h2>
   </div>
   <% List.all.where(user_id: @user.id).each do |list| %>
   <div>
-    <div class="lists col-md-8">
-      <div class="list-title">
-        <%= list.title %>
-      </div>
+    <div class="col-md-8">
+
+        <%= link_to "#{list.title}", list_path(@user, list), class: "btn btn-default list-title"%>
+
    </div>
   <% if @user.id == current_user.id %>
-  <div class="btn btn-danger delete">
-    <small>delete</small>
-  </div>
+    <div>
+      <%= link_to "destroy", list_path(@user, list), method: "delete", class: "btn btn-danger delete"%>
+    </div>
   <%else%>
-  <div class="btn btn-success delete">
+  <div class="btn btn-success delete follow">
     <small>follow</small>
   </div>
   <% end %>

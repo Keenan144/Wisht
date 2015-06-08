@@ -5,7 +5,9 @@ class ListsController < ApplicationController
   end
   
   def show
-    @list = List.find(params[:id])
+    @user = User.find_by(id: current_user.id)
+    @list = List.find_by(id: params[:format])
+
   end
 
   def new
@@ -22,6 +24,13 @@ class ListsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def destroy
+    @user = User.find_by(id: current_user.id)
+    @list = List.find_by(id: params[:format])
+    @list.destroy
+    redirect_to @user
   end
 
   def edit

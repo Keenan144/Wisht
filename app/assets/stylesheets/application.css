@@ -46,6 +46,8 @@
 .lists-container{
   background-color: grey;
   width: 400px;
+  border-radius: 5px;
+  box-shadow: 3px 3px lightblue;
   margin-right: auto;
   margin-left: auto;
   min-height: 400px;
@@ -56,18 +58,26 @@
   background-color: rgb(240,240,240);
   border-radius: 6px;
   margin-bottom: 10px;
-  width: 300px;
+  width: 280px;
+  height: 40px;
 }
 .list-title{
-  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 260px;
   min-height: 40px;
-  line-height: 40px;
-  margin-left: 10px;
+  max-height: 40px;
+  line-height: 25px;
+  text-align: center;
+
 }
 .delete{
   text-align: center;
   float: right;
   margin-top: 3px;
+}
+.follow{
+  width: 80px;
 }
 .footer{
   width: 85%;
