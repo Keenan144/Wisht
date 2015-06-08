@@ -6,11 +6,6 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
-        <%= link_to "New List", new_list_path %>
-        <% List.all.where(user_id: current_user.id).each do |list| %>
-        <%= list.title %>
-        <% end %>
-
     </section>
   </aside>
 </div>
