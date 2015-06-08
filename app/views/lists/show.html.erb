@@ -8,34 +8,32 @@
     </section>
   </aside>
 </div>
-<% if current_user.id == @list.user_id %>
-<%= link_to "add wish", new_wish_path(@list), class: "btn btn-success delete"%>
-<% end %>
-
-
 
 <div class="container lists-container">
   <div class="header">
     <h2>Wishes
-    <small><%= link_to "add wish", new_wish_path %></small></h2>
   </div>
   <% Wish.all.where(list_id: @list.id).each do |wish| %>
   <div>
     <div class="col-md-8">
 
-        <%= link_to "#{wish.name}", wish_path, class: "btn btn-default list-title"%>
+      <%= link_to "#{wish.name}", wish_path, class: "btn btn-default list-title"%>
 
    </div>
-  <% if @user.id == current_user.id %>
+  <% if @list.user_id == current_user.id %>
     <div>
-      <%= link_to "destroy", wish_path(@user, wish), method: "delete", class: "btn btn-danger delete"%>
+      <%= link_to "delete", wish_path(@user, wish), method: "delete", class: "btn btn-danger delete"%>
     </div>
   <%else%>
   <div class="btn btn-success delete follow">
-    <small>follow</small>
+    <small>Grant</small>
   </div>
   <% end %>
+
+  <% if current_user.id == @list.user_id %>
 </div>
+<%= link_to "add wish", new_wish_path(@list), class: "btn btn-success delete"%>
+<% end %>
 
   
   <% end %>

@@ -18,12 +18,13 @@ class WishesController < ApplicationController
   end
 
   def create
+    @user = User.find_by(id: current_user.id)
     @wish = Wish.new(wish_params)
     @wish.update(user_id: current_user.id)
     @wish.save
     if @wish.save
       flash[:success] = "list created!"
-      redirect_to @wish
+      redirect_to @user
     else
       render 'new'
     end

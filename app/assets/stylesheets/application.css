@@ -13,20 +13,64 @@
  *= require_tree .
  *= require_self
  */
-
-
 .yield{
   min-height: 600px;
 }
 .navbar-right{
   height: 20px;  
 }
+.catcher{
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  margin-top: 200px;
+  text-align: center;
+  color: white;
+  font-family: fantasy;
+  font-weight: bolder;
+}
+
 .welcome-tag{
   margin-top: -30px;
   margin-right: 20px;
 }
+body {
+
+  background-image: url("background2big.jpg");
+    background-repeat:no-repeat;
+    background-size:120%;
+    background-position:center;
+    background-color: rgb(63,69,98);
+}
 .user_info-header{
   width: 500px;
+}
+.login{
+  color: rgb(240,240,240);
+  margin-right: 50px;
+  margin-top: 30px;
+}
+.login-form{
+  height: 400px;
+  width: 400px;
+  border-radius: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: rgb(240,240,240);
+  background-color: rgba(240,240,240, 0.8);
+}
+.login-form-form{
+  text-align: center;
+  width: 300px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 100px;
+}
+.inline{
+  text-align: left;
+}
+.login-button{
+  width: 180px;
 }
 .navbar-inverse{
   border-radius: 1px;
