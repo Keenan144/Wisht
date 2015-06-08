@@ -14,6 +14,37 @@
  *= require_self
  */
 
- .navbar-fixed-top{
-  margin-bottom: 20px;
- }
+
+.yield{
+  min-height: 600px;
+}
+.navbar-right{
+  height: 20px;  
+}
+.welcome-tag{
+  margin-top: -30px;
+  margin-right: 20px;
+}
+.navbar-inverse{
+  border-radius: 1px;
+}
+.navbar-collapse{
+  min-height: 80px;
+}
+.navbar-header{
+  font-family: fantasy;
+  font-weight: bolder;
+  font-size: 42px;
+  margin-top: 20px;
+  margin-bottom: -20px;
+  margin-left: 20px;
+  margin-right: 40px;
+}
+.footer{
+  width: 85%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.links{
+  text-align: center;
+}
