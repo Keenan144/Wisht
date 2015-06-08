@@ -2,15 +2,37 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
+      <h1 class="user_info-header">
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
-        <%= link_to "New List", new_list_path %>
-        <% List.all.where(user_id: current_user.id).each do |list| %>
-        <%= list.title %>
-        <% end %>
-
     </section>
   </aside>
+</div>
+
+<div class="container lists-container">
+  <div class="header">
+    <h2>Your Lists
+    <small><%= link_to "add list", new_list_path %></small></h2>
+  </div>
+  <% List.all.where(user_id: @user.id).each do |list| %>
+  <div>
+    <div class="lists col-md-8">
+      <div class="list-title">
+        <%= list.title %>
+      </div>
+   </div>
+  <% if @user.id == current_user.id %>
+  <div class="btn btn-danger delete">
+    <small>delete</small>
+  </div>
+  <%else%>
+  <div class="btn btn-success delete">
+    <small>follow</small>
+  </div>
+  <% end %>
+</div>
+
+  
+  <% end %>
 </div>
