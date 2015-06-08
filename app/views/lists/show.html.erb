@@ -32,9 +32,9 @@
 
   <% if current_user.id == @list.user_id %>
 </div>
-<%= link_to "add wish", new_wish_path(@list), class: "btn btn-success delete"%>
-<% end %>
 
   
   <% end %>
+<%= link_to "add wish", new_wish_path(@list), class: "btn btn-success delete"%>
+<% end %>
 </div>
