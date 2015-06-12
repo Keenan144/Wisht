@@ -6,7 +6,7 @@
         <h4 class="login"> Gifter Helper</h4>
       </li>
       <li>
-        <h4 class="login"> Popular Wishes </h4>
+        <h4 class="login"> <%= link_to "Popular Wishes", popular_wish_path %> </h4>
       </li>
 
 
@@ -15,7 +15,10 @@
 
     <ul class="nav navbar-nav navbar-right navbar-icons">
         <li>
-          <h4 class="login"> Grant a Wish </h4>
+          <h4 class="login">
+            <% offset = rand(Wish.count) %>
+            <%= link_to "Grant a Wish", wish_path(Wish.offset(offset).first) %>
+          </h4>
         </li>
         <li>
           <h4 class="login"><%= link_to "Log in", login_path%></h4>
