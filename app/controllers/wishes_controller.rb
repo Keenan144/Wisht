@@ -4,8 +4,6 @@ class WishesController < ApplicationController
   end
   
   def show
-    @user = User.find_by(id: current_user.id)
-    @list = List.find_by(id: params[:id])
     @wish = Wish.find_by(id: params[:format])
     if @wish == nil 
       @wish = Wish.find(params[:id])
