@@ -47210,3 +47210,259 @@ Processing by UsersController#index as HTML
   Rendered layouts/_header.html.erb (0.5ms)
   Rendered layouts/_footer.html.erb (0.0ms)
 Completed 200 OK in 46ms (Views: 44.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2015-06-11 17:58:01 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (1.6ms)
+  [1m[35mUser Load (5.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered layouts/_header.html.erb (50.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 387ms (Views: 370.2ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/assets/background2big.jpg" for ::1 at 2015-06-11 17:58:02 +0800
+
+
+Started DELETE "/logout" for ::1 at 2015-06-11 17:58:11 +0800
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"e6cYYYrc3WxVZpNdPlofo2q3y11OGcI5Xg7BMd619Hg26MCbuYqKsUdIFgnOzm8d2QiEHLrYlla2V/VGEFM8/w=="}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2015-06-11 17:58:11 +0800
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.0ms)
+  Rendered layouts/_header_loggedout.html.erb (0.7ms)
+  Rendered layouts/_catcher.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 52ms (Views: 51.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2015-06-11 17:58:46 +0800
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (18.0ms)
+  Rendered layouts/_header_loggedout.html.erb (0.4ms)
+  Rendered layouts/_catcher.html.erb (0.2ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 62ms (Views: 61.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2015-06-11 17:58:48 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IEQndfYb7pvqZCOeC2yuPqNAdbtgauixQWhmG0yIq/xtC/+PxU25RvhKpsr7+N6AEP86+pSrvN6pMVJsgm5jew==", "session"=>{"email"=>"keenansturtevant@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "keenansturtevant@gmail.com"]]
+  Rendered sessions/new.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_header_loggedout.html.erb (0.1ms)
+  Rendered layouts/_catcher.html.erb (0.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 88ms (Views: 85.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/login" for ::1 at 2015-06-11 17:59:11 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NbreBYZaeoB/iHhgCdMWtKPicQF8Ri2iO++NYaM6cKx49Qb/tQwtXW2m/TT5R2YKEF0+QIiHec3TtrkWbdy4Kw==", "session"=>{"email"=>"keenan@apptly.co", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "keenan@apptly.co"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 70ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for ::1 at 2015-06-11 17:59:11 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mList Load (0.4ms)[0m  SELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (15.2ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 62ms (Views: 58.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/lists/new" for ::1 at 2015-06-11 17:59:18 +0800
+Processing by ListsController#new as HTML
+  Rendered shared/_error_messages.html.erb (0.3ms)
+  Rendered lists/new.html.erb within layouts/application (7.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 98ms (Views: 96.8ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/lists" for ::1 at 2015-06-11 17:59:25 +0800
+Processing by ListsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/a/P3R84hZX1AKOBLyv43WfG2u6jZkhVTWzL4s7JADOw4BcnLG7SSOcuJtXfv4hj1HmVr1enHDqlNf+VAC/ItA==", "list"=>{"title"=>"car parts", "user_id"=>"", "description"=>""}, "commit"=>"Create my list"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "lists" ("title", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["title", "car parts"], ["description", ""], ["user_id", 1], ["created_at", "2015-06-11 09:59:25.667255"], ["updated_at", "2015-06-11 09:59:25.667255"]]
+  [1m[36m (5.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/lists/2
+Completed 302 Found in 12ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/lists/2" for ::1 at 2015-06-11 17:59:25 +0800
+Processing by ListsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mList Load (0.2ms)[0m  SELECT  "lists".* FROM "lists" WHERE "lists"."id" IS NULL LIMIT 1
+  [1m[36mList Load (0.1ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mWish Load (0.3ms)[0m  SELECT "wishes".* FROM "wishes" WHERE "wishes"."list_id" = $1  [["list_id", 2]]
+  Rendered lists/show.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 48ms (Views: 44.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/wishes/new.2" for ::1 at 2015-06-11 17:59:27 +0800
+Processing by WishesController#new as 
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered shared/_error_messages.html.erb (0.3ms)
+  Rendered wishes/new.html.erb within layouts/application (5.8ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 62ms (Views: 56.0ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/wishes" for ::1 at 2015-06-11 17:59:32 +0800
+Processing by WishesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3DTXx/C3tQejj1nRR+Wu9/BusRBL3WVIaV2pLbo1ILSRew89w+Hi2rGh3IW3cd5JQ9H+Ub8cMSeBBJ1adNPoMw==", "wish"=>{"name"=>"engine", "comments"=>"", "content"=>"", "url"=>"", "list_id"=>"2"}, "commit"=>"Create my wish"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Unpermitted parameter: url
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "wishes" ("name", "list_id", "comments", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "engine"], ["list_id", 2], ["comments", ""], ["content", ""], ["user_id", "1"], ["created_at", "2015-06-11 09:59:32.653776"], ["updated_at", "2015-06-11 09:59:32.653776"]]
+  [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 11ms (ActiveRecord: 6.7ms)
+
+
+Started GET "/users/1" for ::1 at 2015-06-11 17:59:32 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mList Load (0.1ms)[0m  SELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 92ms (Views: 90.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/lists/1.2" for ::1 at 2015-06-11 17:59:37 +0800
+Processing by ListsController#show as 
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mWish Load (0.1ms)[0m  SELECT "wishes".* FROM "wishes" WHERE "wishes"."list_id" = $1  [["list_id", 2]]
+  Rendered lists/show.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 46ms (Views: 44.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2015-06-11 17:59:41 +0800
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" LIMIT 30 OFFSET 0[0m
+  Rendered users/_user.html.erb (0.8ms)
+  Rendered users/index.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 46ms (Views: 44.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for ::1 at 2015-06-11 17:59:43 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mList Load (0.1ms)[0m  SELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 42ms (Views: 40.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/lists/1.2" for ::1 at 2015-06-11 17:59:44 +0800
+Processing by ListsController#show as 
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT  "lists".* FROM "lists" WHERE "lists"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mWish Load (0.1ms)[0m  SELECT "wishes".* FROM "wishes" WHERE "wishes"."list_id" = $1  [["list_id", 2]]
+  Rendered lists/show.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 99ms (Views: 96.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for ::1 at 2015-06-11 18:00:42 +0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT "lists".* FROM "lists" WHERE "lists"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered users/show.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 41ms (Views: 39.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2015-06-11 18:00:46 +0800
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.3ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 40ms (Views: 39.3ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/logout" for ::1 at 2015-06-11 18:01:18 +0800
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"aIgyS/GRHc/eplUo/WJcBimQYATtlBIaxKNJToXq8Rslx+qxwsdKEsyI0HwN9iy4mi8vRRlVRnUs+n05Sww5nA=="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2015-06-11 18:01:18 +0800
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (0.0ms)
+  Rendered layouts/_header_loggedout.html.erb (0.2ms)
+  Rendered layouts/_catcher.html.erb (0.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 94ms (Views: 93.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-13 00:38:46 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_header_loggedout.html.erb (0.6ms)
+  Rendered layouts/_catcher.html.erb (0.3ms)
+  Rendered layouts/_footer.html.erb (0.2ms)
+Completed 200 OK in 347ms (Views: 339.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/background2big.jpg" for ::1 at 2015-06-13 00:38:47 +0800
