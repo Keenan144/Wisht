@@ -10,6 +10,14 @@ class WishesController < ApplicationController
     end
   end
 
+  def popular_wish
+    @wishes = []
+    Wish.select(:name).group(:name).having("count(*) > 1").each do |wish|
+      @wishes << wish
+    end
+    @wish = @wishes.sample
+  end
+
   def new
     @wish = Wish.new
     @list = List.find_by(id: params[:format])
