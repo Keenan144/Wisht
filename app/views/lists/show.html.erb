@@ -17,7 +17,7 @@
   <div>
     <div class="col-md-8">
 
-      <%= link_to "#{wish.name}", wish_path, class: "btn btn-default list-title"%>
+      <%= link_to "#{wish.name}", wish_path(@user, wish), class: "btn btn-default list-title"%>
 
    </div>
   <% if @list.user_id == current_user.id %>

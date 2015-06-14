@@ -8,6 +8,14 @@ class WishesController < ApplicationController
     if @wish == nil 
       @wish = Wish.find(params[:id])
     end
+
+    if @wish.url
+      require 'nokogiri'
+      require 'open-uri'
+      url = @wish.url
+      @doc = Nokogiri::HTML(open(url))
+
+    end
   end
 
   def popular_wish
@@ -28,6 +36,16 @@ class WishesController < ApplicationController
     @wish = Wish.new(wish_params)
     @wish.update(user_id: current_user.id)
     @wish.save
+    if @wish.name == ""
+      if @wish.url
+        require 'nokogiri'
+        require 'open-uri'
+        url = @wish.url
+        @doc = Nokogiri::HTML(open(url))
+        @wish.update(name: @doc.at_css("#productTitle").text)
+      end
+    end
+
     if @wish.save
       flash[:success] = "list created!"
       redirect_to @user
@@ -60,6 +78,6 @@ class WishesController < ApplicationController
   private
 
   def wish_params
-    params.require(:wish).permit(:name, :user_id, :list_id, :comments, :content)
+    params.require(:wish).permit(:name, :user_id, :list_id, :comments, :content, :url)
   end
 end

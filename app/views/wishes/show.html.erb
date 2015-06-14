@@ -5,6 +5,12 @@
       <h1>
         Wish Information
         <%= @wish.name %>
+          <%= p @doc.at_css("title").text %>
+          <% if @doc.at_css('.offer-price') %>
+          <%= p @doc.at_css('.offer-price').text %>
+          <% elsif @doc.css("#priceblock_ourprice")%>
+          <%= p @doc.css("#priceblock_ourprice").text %>
+          <% end %>
       </h1>
     </section>
   </aside>
