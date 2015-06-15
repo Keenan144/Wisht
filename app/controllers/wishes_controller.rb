@@ -34,9 +34,15 @@ class WishesController < ApplicationController
         require 'open-uri'
         url = @wish.url
         @doc = Nokogiri::HTML(open(url))
+        if @doc.at_css("#productTitle")
         @wish.update(name: @doc.at_css("#productTitle").text)
+        end
+        if @doc.at_css("title")
         @wish.update(content: @doc.at_css("title").text)
+        end
+        if @doc.at_css('.offer-price')
         @wish.update(price: @doc.at_css('.offer-price').text)
+        end
           if @wish.price == ""
             @wish.update(price: @doc.at_css('#priceblock_ourprice').text)
           end
