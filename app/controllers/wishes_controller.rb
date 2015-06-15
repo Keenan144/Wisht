@@ -8,14 +8,6 @@ class WishesController < ApplicationController
     if @wish == nil 
       @wish = Wish.find(params[:id])
     end
-
-    if @wish.url
-      require 'nokogiri'
-      require 'open-uri'
-      url = @wish.url
-      @doc = Nokogiri::HTML(open(url))
-
-    end
   end
 
   def popular_wish
@@ -43,6 +35,11 @@ class WishesController < ApplicationController
         url = @wish.url
         @doc = Nokogiri::HTML(open(url))
         @wish.update(name: @doc.at_css("#productTitle").text)
+        @wish.update(content: @doc.at_css("title").text)
+        @wish.update(price: @doc.at_css('.offer-price').text)
+          if @wish.price == ""
+            @wish.update(price: @doc.at_css('#priceblock_ourprice').text)
+          end
       end
     end
 
@@ -58,7 +55,7 @@ class WishesController < ApplicationController
     @user = User.find_by(id: current_user.id)
     @wish = Wish.find_by(id: params[:format])
     @wish.destroy
-    redirect_to @user
+    redirect_to :back
   end
 
   def edit
