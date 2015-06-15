@@ -2,6 +2,7 @@
   <div class="navbar-header">
     <%= link_to "Wisht!", root_path %>
   </div>
+    <small>version 0.0.2 </small>
   <div class="navbar-collapse">
     <ul class="nav navbar-nav">
       <li><%= link_to "Home", root_path %></li>
@@ -19,7 +20,8 @@
            <%= link_to "Settings", edit_user_path(current_user) %>
         </li>
         <li>
-           <%= link_to "Log out", logout_path, method: "delete" %>
+           <%= link_to "Log out", logout_path, :method=>:delete %>
+           <% button_to "logout", logout_path, :method=>:delete%>
         </li>
       <% else %>
         <li>
