@@ -53,9 +53,9 @@ class WishesController < ApplicationController
 
   def destroy
     @user = User.find_by(id: current_user.id)
-    @wish = Wish.find_by(id: params[:format])
+    @wish = Wish.find_by(id: params[:id])
     @wish.destroy
-    redirect_to :back
+    redirect_to @user
   end
 
   def edit

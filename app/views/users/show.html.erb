@@ -26,7 +26,7 @@
    </div>
   <% if @user.id == current_user.id %>
     <div>
-      <%= link_to "delete", list_path(@user, list), method: "delete", class: "btn btn-danger delete"%>
+      <%= button_to "delete", list_path(@user, list), :method=>:delete , class: "btn btn-danger delete"%>
     </div>
   <%else%>
   <div class="btn btn-success delete follow">

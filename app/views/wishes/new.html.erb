@@ -5,7 +5,16 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@wish) do |f| %>
       <%= render 'shared/error_messages' %>
+      <div class="amazon-form">
+        <h5> Paste an Amazon Url here, or fill out the form below </h5>
+        <%= f.label :url %>
+        <%= f.text_field :url, class: 'form-control' %>
 
+        <%= f.submit "Create my wish", class: "btn btn-primary" %>
+      </div>
+      <br>
+
+      <div class="custom-form">
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
 
@@ -15,15 +24,16 @@
       <%= f.label :content %>
       <%= f.text_field :content, class: 'form-control' %>
 
-      <h3>
-        Or Paste an Amazon.com URL
-      </h3>
-      <%= f.label :url %>
-      <%= f.text_field :url, class: 'form-control' %>
+      <%= f.label :comments %>
+      <%= f.text_field :comments, class: 'form-control' %>
+
+      <%= f.label :price %>
+      <%= f.text_field :price, class: 'form-control' %>
 
       <%= f.hidden_field :list_id, :value => @list.id %>
 
       <%= f.submit "Create my wish", class: "btn btn-primary" %>
+      </div>
     <% end %>
   </div>
 </div>

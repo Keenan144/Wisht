@@ -11,30 +11,22 @@
 
 <div class="container lists-container">
   <div class="header">
-    <h2>Wishes
+    <h2>Wishes</h2>
   </div>
   <% Wish.all.where(list_id: @list.id).each do |wish| %>
   <div>
     <div class="col-md-8">
-
       <%= link_to "#{wish.name}", wish_path(@user, wish), class: "btn btn-default list-title"%>
-
-   </div>
-  <% if @list.user_id == current_user.id %>
-    <div>
-      <%= link_to "delete", wish_path(@user, wish), method: "delete", class: "btn btn-danger delete"%>
-    </div>
-  <%else%>
-  <div class="btn btn-success delete follow">
-    <small>Grant</small>
   </div>
-  <% end %>
-
-  <% if current_user.id == @list.user_id %>
+  <% if @list.user_id == current_user.id %>
+   <%= button_to "delete", wish_path(wish), :method=>:delete , class: "btn btn-danger delete"%>
+  <%else%>
+    <div class="btn btn-success delete follow">
+      <small>Grant</small>
+    </div>
+  <%end%>
 </div>
 
-  
-  <% end %>
 <% end %>
 <%= link_to "add wish", new_wish_path(@list), class: "btn btn-success delete"%>
 </div>
