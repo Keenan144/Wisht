@@ -1,23 +1,26 @@
-<% provide(:title, @wish.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        Wish Information
-      </h1>
+<% provide(:title,  @wish.name) %>
+<br><br><br>
 
-      <div class="wish">
-        <div class="title">
-          <%= @wish.content %>
-          <br>
+<div class="col-md-6">
+  <div class="post-container">
+    <div class="post-content no-padding wish-title">
+        <%= @wish.name %>
+    </div>
+    <div class="post-content wish-content">
+        <p><%= @wish.content %></p>
+    </div>
+    <div class="post-atribut wish-footer">
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <a href="#"><span class="wish-price"><i class="fa fa-money wish-price"></i> <%= @wish.price %></span></a>
         </div>
-        <div class="product-info">
-          <%= @wish.price%>
-          <br>
-          <a href=<%=@wish.url%>>
-            <%= @wish.url %>
-          </a>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <a href="#"><span class="wish-comments"><i class="fa fa-comments"></i> 400</span></a>
         </div>
-    </section>
-  </aside>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <a href="#"><span class="wish-views"><i class="fa fa-eye"></i> 2500</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

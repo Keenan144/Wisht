@@ -8,7 +8,7 @@
 </head>
 <body>
 <% if current_user != nil %>
-<%= render 'layouts/header' %>
+<%= render 'layouts/header' unless @skip_header  %>
 <% else %>
 <%= render 'layouts/header_loggedout' %>
 <%= render 'layouts/catcher'%>
@@ -21,7 +21,7 @@
       <div class="yield">
       <%= yield %>
       </div>
-      <%= render 'layouts/footer' %>
+      <%= render 'layouts/footer' unless @skip_footer %>
 
     </div>
 

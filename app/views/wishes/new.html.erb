@@ -6,7 +6,10 @@
     <%= form_for(@wish) do |f| %>
       <%= render 'shared/error_messages' %>
       <div class="amazon-form">
-        <h5> Paste an Amazon Url here, or fill out the form below </h5>
+        <h5> Select a site and paste the url below
+        <% f.label :site %>
+        <%= f.select :site, [ 'Amazon.com' ], :prompt => 'Select One' %>
+        </h5>
         <%= f.label :url %>
         <%= f.text_field :url, class: 'form-control' %>
 
