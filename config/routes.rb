@@ -1,12 +1,5 @@
 
 Rails.application.routes.draw do
-  resources :articles
-
-  resources :replies
-
-  resources :comments
-
-  resources :aritcles
 
   get 'sessions/new'
   
@@ -23,6 +16,18 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
+  namespace :admin, constraints: { subdomain: '' } do 
+    resources :meterics, only: [:index, :edit, :searches] do
+      collection do
+        post :approve
+      end
+    end
+  end
+
+  resources :articles
+  resources :replies
+  resources :comments
+  resources :aritcles
   resources :users
   resources :wishes
   resources :lists

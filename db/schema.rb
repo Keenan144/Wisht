@@ -11,84 +11,76 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712095042) do
+ActiveRecord::Schema.define(version: 20150712145107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "aritcles", force: :cascade do |t|
-    t.string   "title"
-    t.string   "date"
-    t.text     "content"
-    t.integer  "list_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "articles", force: :cascade do |t|
-    t.string   "title"
-    t.string   "date"
-    t.text     "content"
-    t.integer  "list_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",      default: " "
+    t.string   "date",       default: " "
+    t.text     "content",    default: " "
+    t.integer  "list_id",    default: 0
+    t.integer  "user_id",    default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string   "title"
-    t.string   "date"
-    t.text     "content"
-    t.integer  "wish_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",      default: " "
+    t.string   "date",       default: " "
+    t.text     "content",    default: " "
+    t.integer  "wish_id",    default: 0
+    t.integer  "user_id",    default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "friends", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "friend_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",    default: 0
+    t.integer  "friend_id",  default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "lists", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "title"
-    t.integer  "user_id"
-    t.text     "description"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "title",       default: " "
+    t.integer  "user_id",     default: 0
+    t.text     "description", default: " "
   end
 
   create_table "replies", force: :cascade do |t|
-    t.string   "title"
-    t.string   "date"
-    t.text     "content"
-    t.integer  "comment_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",      default: " "
+    t.string   "date",       default: " "
+    t.text     "content",    default: " "
+    t.integer  "comment_id", default: 0
+    t.integer  "user_id",    default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.string "remember_digest"
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "remember_digest"
+    t.datetime "login"
+    t.integer  "login_count",     default: 0
   end
 
   create_table "wishes", force: :cascade do |t|
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "user_id"
-    t.string   "content"
-    t.string   "url"
-    t.string   "price"
-    t.integer  "list_id"
-    t.string   "name"
-    t.text     "notes"
-    t.string   "site"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "user_id",    default: " "
+    t.string   "content",    default: " "
+    t.string   "url",        default: " "
+    t.string   "price",      default: " "
+    t.integer  "list_id",    default: 0
+    t.string   "name",       default: " "
+    t.text     "notes",      default: " "
+    t.string   "site",       default: " "
     t.integer  "views",      default: 1
   end
 
