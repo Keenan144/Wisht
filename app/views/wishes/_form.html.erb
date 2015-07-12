@@ -1,30 +1,31 @@
+<% unless current_user == nil %>
+  <div class="add_comment">
+    <%= form_for(@comment) do |f| %>
+      <% if @comment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
-<div class="add_comment">
-  <%= form_for(@comment) do |f| %>
-    <% if @comment.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+          <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-        <ul>
-        <% @comment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <div class="comment-no-background" align="center">
+        <% f.label :comment %>
+        <%= f.text_field :content, class: 'form-control' %>
 
-  <div class="comment-no-background" align="center">
-      <% f.label :comment %>
-      <%= f.text_field :content, class: 'form-control' %>
+        <%= f.hidden_field :title, :value => User.find(current_user.id).name + " comment"%>
 
-      <%= f.hidden_field :title, :value => User.find(current_user.id).name + " comment"%>
-
-      <%= f.hidden_field :user_id, :value => current_user.id %>
-      <%= f.hidden_field :wish_id, :value => params[:id] %>
-      <%= f.hidden_field :date, :value => DateTime.now %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :wish_id, :value => params[:id] %>
+        <%= f.hidden_field :date, :value => DateTime.now %>
 
 
-      <%= f.submit "Comment", class: "btn btn-primary" %>
-    <% end %>
+        <%= f.submit "Comment", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end%> 
