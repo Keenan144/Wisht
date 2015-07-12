@@ -8,6 +8,12 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  has_many :wishes
+  has_many :lists
+  has_many :comments
+  has_many :replys
+  has_many :articles
+  has_many :friends
 
     # Returns true if the given token matches the digest.
   def authenticated?(remember_token)

@@ -8,6 +8,15 @@ class WishesController < ApplicationController
     if @wish == nil 
       @wish = Wish.find(params[:id])
     end
+    @comment = Comment.new
+    @comments = @wish.comments.all 
+    @wish.update(views: @wish.views + 1)
+  end
+
+  def comments
+    @comment = Comment.new
+    @wish = Wish.find_by(id: params[:id])
+    @comments = @wish.comments.all 
   end
 
   def popular_wish

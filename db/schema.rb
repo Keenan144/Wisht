@@ -11,10 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150711080749) do
+ActiveRecord::Schema.define(version: 20150712095042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "aritcles", force: :cascade do |t|
+    t.string   "title"
+    t.string   "date"
+    t.text     "content"
+    t.integer  "list_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "title"
+    t.string   "date"
+    t.text     "content"
+    t.integer  "list_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "title"
+    t.string   "date"
+    t.text     "content"
+    t.integer  "wish_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "lists", force: :cascade do |t|
     t.datetime "created_at",  null: false
@@ -22,6 +59,16 @@ ActiveRecord::Schema.define(version: 20150711080749) do
     t.string   "title"
     t.integer  "user_id"
     t.text     "description"
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.string   "title"
+    t.string   "date"
+    t.text     "content"
+    t.integer  "comment_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,16 +79,17 @@ ActiveRecord::Schema.define(version: 20150711080749) do
   end
 
   create_table "wishes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "user_id"
     t.string   "content"
     t.string   "url"
     t.string   "price"
     t.integer  "list_id"
     t.string   "name"
-    t.text     "comments"
+    t.text     "notes"
     t.string   "site"
+    t.integer  "views",      default: 1
   end
 
 end

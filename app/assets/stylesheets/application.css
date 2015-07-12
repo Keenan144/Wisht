@@ -186,5 +186,24 @@ body {
 }
 .post-atribut{
   border: 1px solid grey;
-
 }
+/*####################### Comments ##################*/
+.add_comment{
+  width: 300px;
+}
+.comment-no-background{
+  background-color: none;
+}
+.comment-content{
+  width: 300px;
+  margin-right: 14%;
+  float: right;
+}
+
+
+
+
+
+
+
+

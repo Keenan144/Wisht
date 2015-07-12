@@ -1,6 +1,16 @@
 
 Rails.application.routes.draw do
+  resources :articles
+
+  resources :replies
+
+  resources :comments
+
+  resources :aritcles
+
   get 'sessions/new'
+  
+  get 'wishes/:id/comments' => 'wishes#comments'
 
   root             'static_pages#home'
   get 'help'    => 'static_pages#help'
