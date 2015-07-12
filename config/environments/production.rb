@@ -8,6 +8,8 @@ config.serve_static_assets = true
 config.assets.compile = true
 config.assets.digest = true
 
+config.secret_key_base = ENV["SECRET_KEY_BASE"]
+
   config.assets.compile = true
   config.assets.digest = true
 
