@@ -1,24 +1,27 @@
 <% provide(:title, "Log in") %>
 <br><br>
 <div class="row login-form">
+  <div class="logo-login">
+   <a class="navbar-brand" id="logo-login" href="index.html"><i class="fa fa-recycle"></i> <span>Wish</span>t</a>
+  </div>
+
   <div class="login-form-form">
-    <h3> Sorry, this site is down for maintenance. </h3>
-    <% form_for(:session, url: login_path) do |f| %>
+    <%= form_for(:session, url: login_path) do |f| %>
 
-      <% f.label :email %>
-      <% f.email_field :email, class: 'form-control' %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
 
-      <% f.label :password %>
-      <% f.password_field :password, class: 'form-control' %>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
 
-      <% f.label :remember_me, class: "checkbox inline" do %>
-        <% f.check_box :remember_me %>
+      <%= f.label :remember_me, class: "checkbox inline" do %>
+        <%= f.check_box :remember_me %>
         <span>Remember me on this computer</span>
       <% end %>
 
-      <% f.submit "Log in", class: "btn btn-primary login-button" %>
+      <%= f.submit "Log in", class: "btn btn-primary login-button" %>
     <% end %>
     <br>
-    <p><% link_to "Sign up now!", signup_path %></p>
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
   </div>
 </div>

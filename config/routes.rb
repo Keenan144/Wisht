@@ -1,6 +1,9 @@
 
 Rails.application.routes.draw do
+
   get 'sessions/new'
+  
+  get 'wishes/:id/comments' => 'wishes#comments'
 
   root             'static_pages#home'
   get 'help'    => 'static_pages#help'
@@ -13,6 +16,18 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
+  namespace :admin, constraints: { subdomain: '' } do 
+    resources :meterics, only: [:index, :edit, :searches] do
+      collection do
+        post :approve
+      end
+    end
+  end
+
+  resources :articles
+  resources :replies
+  resources :comments
+  resources :aritcles
   resources :users
   resources :wishes
   resources :lists

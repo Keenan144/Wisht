@@ -1,0 +1,4 @@
+.home-page-header, .title-desc {
+  min-height: 40px;
+  max-height: 80px;
+}

@@ -16,7 +16,16 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.update(login: DateTime.now)
+    @user.update(login_count: @user.login_count += 1)
+
+
     if @user.save
+      List.new(title: "Home Items", description: "A list of wishes for my home.", user_id: @user.id).save
+      List.new(title: "Work Items", description: "A list of wishes for where I work.", user_id: @user.id).save
+      List.new(title: "Family Items", description: "A list of wishes for my family.", user_id: @user.id).save
+      List.new(title: "Random Items", description: "A list of random wishes.", user_id: @user.id).save
+
       log_in @user
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user

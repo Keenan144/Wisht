@@ -1,23 +1,45 @@
-<% provide(:title, @wish.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        Wish Information
-      </h1>
+<% provide(:title,  @wish.name) %>
+<br><br><br>
 
-      <div class="wish">
-        <div class="title">
-          <%= @wish.content %>
-          <br>
+<div class="col-md-6">
+  <div class="post-container">
+    <div class="post-content no-padding wisher">
+      <% user = User.find_by(id: @wish.user_id) %>
+    <a href="/users/<%= user.id %>">
+      <%= user.name %>
+    </a>
+    </div>
+    <div class="post-content no-padding wish-title">
+      <a href="/wishes/<%= @wish.id %>">
+        <%= @wish.name %>
+      </a>
+    </div>
+    <div class="post-content wish-content">
+      <a href="/wishes/<%= @wish.id %>">
+        <p><%= @wish.content %></p>
+      </a>
+    </div>
+    <div class="post-atribut wish-footer">
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <a href="/wishes/<%= @wish.id %>"><span class="wish-price"><i class="fa fa-money wish-price"></i> <%= @wish.price %></span></a>
         </div>
-        <div class="product-info">
-          <%= @wish.price%>
-          <br>
-          <a href=<%=@wish.url%>>
-            <%= @wish.url %>
-          </a>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <a href="/wishes/<%= @wish.id %>/comments"><span class="wish-comments"><i class="fa fa-comments"></i> <%=@wish.comments.count%></span></a>
         </div>
-    </section>
-  </aside>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <span class="wish-views"><i class="fa fa-eye"></i> <%=@wish.views%></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="comment-content">
+<% @comments.each do |comment| %>
+      <em><%= User.find(comment.user_id).name %>:</em> 
+      <%= comment.content %>
+    <br>
+<% end %>
+<br>
+<%= render 'form' %>
 </div>

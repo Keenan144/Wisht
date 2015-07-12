@@ -30,8 +30,12 @@ class ListsController < ApplicationController
 
   def destroy
     @user = User.find_by(id: current_user.id)
-    @list = List.find_by(id: params[:format])
-    @list.destroy
+    list = List.find_by(id: params[:format])
+    wishes = Wish.where(list_id: params[:format])
+    wishes.each do |wish|
+      wish.destroy
+    end
+    list.destroy
     redirect_to @user
   end
 

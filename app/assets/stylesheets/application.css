@@ -13,11 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+
+html {
+  font-color: black;
+}
 .yield{
   min-height: 600px;
 }
-.navbar-right{
-  height: 20px;  
+#navbar-top {
+  background-color: rgb(26,26,26);
+  width: 100%;
+}
+.link{
+  font-color: black;
 }
 .catcher{
   position: absolute;
@@ -31,16 +40,16 @@
 }
 
 .welcome-tag{
-  margin-top: -30px;
-  margin-right: 20px;
+  float: left;
+  margin-top: 32px;
 }
-body {
 
+body {
   background-image: url("background2big.jpg");
     background-repeat:no-repeat;
     background-size:120%;
     background-position:center;
-    background-color: rgb(63,69,98);
+    background-color: rgb(240,240,240);
 }
 .user_info-header{
   width: 500px;
@@ -48,9 +57,10 @@ body {
 .white-text{
   color: rgb(200,200,200);
 }
-.page-header{
-  color: white;
-  width: 400px;
+.logo-login{
+}
+#logo-login{
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -74,7 +84,7 @@ body {
   width: 300px;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 100px;
+  margin-top: 80px;
 }
 .create-account{
   width: 157px;
@@ -99,18 +109,6 @@ body {
 }
 .navbar-inverse{
   border-radius: 1px;
-}
-.navbar-collapse{
-  min-height: 80px;
-}
-.navbar-header{
-  font-family: fantasy;
-  font-weight: bolder;
-  font-size: 42px;
-  margin-top: 20px;
-  margin-bottom: -20px;
-  margin-left: 20px;
-  margin-right: 40px;
 }
 .lists-container{
   background-color: grey;
@@ -157,3 +155,55 @@ body {
 .links{
   text-align: center;
 }
+
+
+/*#################### Wish #####################*/
+.wisher{
+  background-color: rgb(74,158,184);
+}
+.wish-title{
+  background-color: rgb(207,226,232);
+}
+.wish-content{
+  max-height: 200px;
+  background-color: rgb(240,240,240);
+  box-shadow: none;
+}
+.post-content{
+  border: 1px solid grey;
+}
+.wish-price{
+  color: green;
+}
+.wish-comments{
+  color: navy;
+}
+.wish-views{
+  color: rgb(213,153,51);
+}
+.wish-footer{
+  background-color: rgb(163,206,217);
+}
+.post-atribut{
+  border: 1px solid grey;
+}
+/*####################### Comments ##################*/
+.add_comment{
+  width: 300px;
+}
+.comment-no-background{
+  background-color: none;
+}
+.comment-content{
+  width: 300px;
+  margin-right: 14%;
+  float: right;
+}
+
+
+
+
+
+
+
+

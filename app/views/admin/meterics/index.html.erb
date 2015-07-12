@@ -1,0 +1,84 @@
+<div class="wrapper wrapper-content col-xs-12">
+  <div class="row white-text">
+    <div class="col-md-2 col-md-offset-2">
+      <h2> Create a user </h2>
+      <%= form_for(@new_user) do |f| %>
+        <%= render 'shared/error_messages' %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <%= f.label :password_confirmation, "Password Again" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+        <br>
+        <div class="create-account">
+        <%= f.submit "Create a user", class: "btn btn-primary" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="dashboard_content">
+  <p class="lead">
+    Last Login's
+  </p>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Last Login</th>
+        <th>List Amount</th>
+        <th>Wish Amount</th>
+      </tr>
+    </thead>
+      <% @users.each do |user| %>
+        <% time = Time.parse(user.login.to_s) %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= time.in_time_zone("Pacific Time (US & Canada)") %></td>
+          <td><%= user.lists.count %></td>
+          <td><%= user.wishes.count %></td>
+        </tr>
+      <tr>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+   <div class="dashboard_content">
+    <p class="lead">
+      Users Latest Wishes
+    </p>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Last Wish Title</th>
+          <th>Last Wish Content</th>
+          <th>Price</th>
+          <th>URL</th>
+          <th>Site</th>
+        </tr>
+      </thead>
+        <% @users.each do |user| %>
+          <tr>
+          <td><%= user.name%></td>
+            <td><%= user.wishes.last.name %></td>
+            <td><%= user.wishes.last.content %></td>
+            <td><%= user.wishes.last.price %></td>
+            <td><%= user.wishes.last.url %></td>
+            <td><%= user.wishes.last.site %></td>
+          </tr>
+        <tr>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>

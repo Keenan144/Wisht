@@ -8,6 +8,15 @@ class WishesController < ApplicationController
     if @wish == nil 
       @wish = Wish.find(params[:id])
     end
+    @comment = Comment.new
+    @comments = @wish.comments.all 
+    @wish.update(views: @wish.views + 1)
+  end
+
+  def comments
+    @comment = Comment.new
+    @wish = Wish.find_by(id: params[:id])
+    @comments = @wish.comments.all 
   end
 
   def popular_wish
@@ -28,34 +37,42 @@ class WishesController < ApplicationController
     @wish = Wish.new(wish_params)
     @wish.update(user_id: current_user.id)
     @wish.save
-    if @wish.name == ""
-      if @wish.url
-        require 'nokogiri'
-        require 'open-uri'
-        url = @wish.url
-        @doc = Nokogiri::HTML(open(url))
-        if @doc.at_css("#productTitle")
-        @wish.update(name: @doc.at_css("#productTitle").text)
-        end
-        if @doc.at_css("title")
-        @wish.update(content: @doc.at_css("title").text)
-        end
-        if @doc.at_css('.offer-price')
-        @wish.update(price: @doc.at_css('.offer-price').text)
-        end
-          if @wish.price == ""
-            @wish.update(price: @doc.at_css('#priceblock_ourprice').text)
-          end
-      end
+    if @wish.site == "Amazon.com"
+      amazon_scrape
     end
 
     if @wish.save
-      flash[:success] = "list created!"
+      flash[:success] = "Wish created!"
       redirect_to @user
     else
       render 'new'
     end
   end
+
+  def amazon_scrape
+    if @wish.url
+      require 'nokogiri'
+      require 'open-uri'
+      url = @wish.url
+      @doc = Nokogiri::HTML(open(url))
+      if @doc.at_css("#productTitle")
+      @wish.update(name: @doc.at_css("#productTitle").text)
+      end
+      if @doc.at_css("title")
+      @wish.update(content: @doc.at_css("title").text)
+      end
+      if @wish.price == nil
+        @wish.update(price: @doc.at_css('#priceblock_ourprice').text)
+      end
+      if @wish.price == nil
+        @wish.update(price: @doc.at_css('.offer-price').text)
+      end
+      if @wish.price == nil
+        @wish.update(price: @doc.at_css('.a-color-price').text)
+      end
+    end
+  end
+
 
   def destroy
     @user = User.find_by(id: current_user.id)
@@ -81,6 +98,6 @@ class WishesController < ApplicationController
   private
 
   def wish_params
-    params.require(:wish).permit(:name, :user_id, :list_id, :comments, :content, :url)
+    params.require(:wish).permit(:name, :user_id, :list_id, :comments, :content, :url, :site)
   end
 end
