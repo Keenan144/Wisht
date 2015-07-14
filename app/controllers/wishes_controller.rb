@@ -38,11 +38,8 @@ class WishesController < ApplicationController
     @wish.update(user_id: current_user.id)
     @wish.save
     if @wish.site == "Amazon.com"
-      require 'nokogiri'
       require 'open-uri'
-      
-      url = @wish.url
-      @doc = Nokogiri::HTML(open(url))
+      @doc = Nokogiri::HTML(open(@wish.url.to_s).read)
       if @doc.at_css("#productTitle")
       @wish.update(name: @doc.at_css("#productTitle").text)
       end
