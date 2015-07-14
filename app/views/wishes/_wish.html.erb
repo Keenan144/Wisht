@@ -22,7 +22,7 @@
             <a href="/wishes/<%= wish.id %>"><span class="wish-price"><i class="fa fa-money wish-price"></i> $<%= wish.price %></span></a>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-4">
-            <a href="/wishes/<%= wish.id %>/comments"><span class="wish-comments"><i class="fa fa-comments"></i> <%=wish.comments.count%></span></a>
+            <a href="/wishes/<%= wish.id %>/comments"><span class="wish-comments"><i class="fa fa-comments"></i> <%= wish.comments.count%></span></a>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-4">
             <span class="wish-views"><i class="fa fa-eye"></i> <%=wish.views%></span>
