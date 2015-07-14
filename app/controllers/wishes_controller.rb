@@ -39,7 +39,9 @@ class WishesController < ApplicationController
     @wish.save
     if @wish.site == "Amazon.com"
       require 'open-uri'
-      @doc = Nokogiri::HTML(open('http://www.amazon.com/gp/product/B00I362NXU/ref=s9_psimh_gw_p267_d0_i3?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=desktop-1&pf_rd_r=00KQZS1DTFYJG1VW4WB8&pf_rd_t=36701&pf_rd_p=2079475242&pf_rd_i=desktop').read)
+      url = @wish.url.to_s
+      p url
+      @doc = Nokogiri::HTML(open(url).read)
       if @doc.at_css("#productTitle")
       @wish.update(name: @doc.at_css("#productTitle").text)
       end
@@ -55,6 +57,9 @@ class WishesController < ApplicationController
       if @wish.price == nil
         @wish.update(price: @doc.at_css('.a-color-price').text)
       end
+      p @doc.at_css('#priceblock_ourprice').text
+      p @doc.at_css('.offer-price').text
+      p @doc.at_css('.a-color-price').text
     end
 
     if @wish.save
