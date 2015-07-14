@@ -45,10 +45,6 @@ html {
 }
 
 body {
-  background-image: url("background2big.jpg");
-    background-repeat:no-repeat;
-    background-size:120%;
-    background-position:center;
     background-color: rgb(240,240,240);
 }
 .user_info-header{
