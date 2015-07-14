@@ -38,21 +38,9 @@ class WishesController < ApplicationController
     @wish.update(user_id: current_user.id)
     @wish.save
     if @wish.site == "Amazon.com"
-      amazon_scrape
-    end
-
-    if @wish.save
-      flash[:success] = "Wish created!"
-      redirect_to @user
-    else
-      render 'new'
-    end
-  end
-
-  def amazon_scrape
-    if @wish.url
       require 'nokogiri'
       require 'open-uri'
+      
       url = @wish.url
       @doc = Nokogiri::HTML(open(url))
       if @doc.at_css("#productTitle")
@@ -71,7 +59,38 @@ class WishesController < ApplicationController
         @wish.update(price: @doc.at_css('.a-color-price').text)
       end
     end
+
+    if @wish.save
+      flash[:success] = "Wish created!"
+      redirect_to @user
+    else
+      render 'new'
+    end
   end
+
+  # def amazon_scrape
+  #   if @wish.url
+  #     require 'nokogiri'
+  #     require 'open-uri'
+  #     url = @wish.url
+  #     @doc = Nokogiri::HTML(open(url))
+  #     if @doc.at_css("#productTitle")
+  #     @wish.update(name: @doc.at_css("#productTitle").text)
+  #     end
+  #     if @doc.at_css("title")
+  #     @wish.update(content: @doc.at_css("title").text)
+  #     end
+  #     if @wish.price == nil
+  #       @wish.update(price: @doc.at_css('#priceblock_ourprice').text)
+  #     end
+  #     if @wish.price == nil
+  #       @wish.update(price: @doc.at_css('.offer-price').text)
+  #     end
+  #     if @wish.price == nil
+  #       @wish.update(price: @doc.at_css('.a-color-price').text)
+  #     end
+  #   end
+  # end
 
 
   def destroy
