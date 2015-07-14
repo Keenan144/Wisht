@@ -41,7 +41,7 @@ class WishesController < ApplicationController
       require 'open-uri'
       url = @wish.url.to_s
       p url
-      @doc = Nokogiri::HTML(open(url).read)
+      @doc = Nokogiri::HTML(open("'" + url.to_s + "'").read)
       if @doc.at_css("#productTitle")
       @wish.update(name: @doc.at_css("#productTitle").text)
       end
